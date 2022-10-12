@@ -1,0 +1,36 @@
+{
+    "name": "tkaratug/powered-enum",
+    "description": "Some cool add-ons to PHP native enums.",
+    "homepage": "https://github.com/tkaratug/powered-enum",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Turan Karatuğ",
+            "email": "tkaratug@hotmail.com.tr"
+        }
+    ],
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tkaratug\\PoweredEnum\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tkaratug\\PoweredEnum\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit tests/*.php",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

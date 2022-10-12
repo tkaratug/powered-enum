@@ -2,7 +2,6 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tkaratug/powered-enum.svg?style=flat-square)](https://packagist.org/packages/tkaratug/powered-enum)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/tkaratug/powered-enum/run-tests?label=tests)](https://github.com/tkaratug/powered-enum/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/tkaratug/powered-enum/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/tkaratug/powered-enum/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/tkaratug/powered-enum.svg?style=flat-square)](https://packagist.org/packages/tkaratug/powered-enum)
 
 This package offers a trait that contains some cool features for native PHP enums.

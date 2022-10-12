@@ -23,7 +23,7 @@ All you need to do is use the `PoweredEnum` trait in your native PHP enums.
 ```php
 use Tkaratug\PoweredEnum\PoweredEnum;
 
-enum MyEnum: string
+enum MyEnum: int
 {
     use PoweredEnum;
     
@@ -56,13 +56,13 @@ ___
 - You can check the equality of a case against any name by passing it to the `is()` and `isNot()` methods.
 
 ```php
-$orderStatus = OrderStatus::PENDING;
+$myEnum = MyEnum::ONE;
 
-$orderStatus->is(OrderStatus::PENDING);     // true
-$orderStatus->is(OrderSTatus::COMPLETED)    // false
+$myEnum->is(MyEnum::ONE);      // true
+$myEnum->is(MyEnum::TWO);      // false
 
-$orderStatus->isNot(OrderStatus::PENDING);  // false
-$orderStatus->isNot(OrderSTatus::COMPLETED) // true
+$myEnum->isNot(MyEnum::ONE);   // false
+$myEnum->isNot(MyEnum::TWO);   // true
 ```
 
 ---
@@ -73,15 +73,15 @@ $orderStatus->isNot(OrderSTatus::COMPLETED) // true
 - You can check whether an enum has a case by given name via the `hasName()` method.
 
 ```php
-enum OrderStatus: string {
+enum MyEnum: int {
     use PoweredEnum;
 
-    case PENDING = 'pending';
-    case COMPLETED = 'completed';
+    case ONE = 1;
+    case TWO = 2;
 }
 
-OrderStatus::hasName('PENDING');    // true
-OrderStatus::hasName('CANCELLED');  // false
+MyEnum::hasName('ONE');     // true
+MyEnum::hasName('THREE');   // false
 ```
 
 ___
@@ -90,15 +90,15 @@ ___
 - You can check whether an enum has a case by given value via the `hasValue()` method.
 
 ```php
-enum OrderStatus: string {
+enum MyEnum: int {
     use PoweredEnum;
 
-    case PENDING = 'pending';
-    case COMPLETED = 'completed';
+    case ONE = 1;
+    case TWO = 2;
 }
 
-OrderStatus::hasValue('pending');    // true
-OrderStatus::hasValue('cancelled');  // false
+MyEnum::hasValue(1);   // true
+MyEnum::hasValue(3);   // false
 ```
 
 ___
@@ -107,14 +107,14 @@ ___
 - You can get enum case names as an array by using the `getNames()` method.
 
 ```php
-enum OrderStatus: string {
+enum MyEnum: int {
     use PoweredEnum;
 
-    case PENDING = 'pending';
-    case COMPLETED = 'completed';
+    case ONE = 1;
+    case TWO = 2;
 }
 
-OrderStatus::getNames(); // ['PENDING', 'COMPLETED']
+MyEnum::getNames();   // ['ONE', 'TWO']
 ```
 
 ___
@@ -123,14 +123,14 @@ ___
 - You can get enum case values as an array by using the `getValues()` method.
 
 ```php
-enum OrderStatus: string {
+enum MyEnum: int {
     use PoweredEnum;
 
-    case PENDING = 'pending';
-    case COMPLETED = 'completed';
+    case ONE = 1;
+    case TWO = 2;
 }
 
-OrderStatus::getValues(); // ['pending', 'completed']
+MyEnum::getValues();   // [1, 2]
 ```
 
 ___
@@ -139,14 +139,14 @@ ___
 - You can get a combined array of the enum cases as `value => name` by using the `toArray()` method.
 
 ```php
-enum OrderStatus: string {
+enum MyEnum: int {
     use PoweredEnum;
 
-    case PENDING = 'pending';
-    case COMPLETED = 'completed';
+    case ONE = 1;
+    case TWO = 2;
 }
 
-OrderStatus::toArray(); // ['pending' => 'PENDING', 'completed' => 'COMPLETED]
+MyEnum::toArray();   // [1 => 'ONE', 2 => 'TWO']
 ```
 
 ___
@@ -155,15 +155,15 @@ ___
 - You can get names of enum cases as an array except for given ones by using the `getNamesExcept()` method.
 
 ```php
-enum OrderStatus: string {
+enum MyEnum: int {
     use PoweredEnum;
 
-    case PENDING = 'pending';
-    case COMPLETED = 'completed';
-    case CANCELLED = 'cancelled';
+    case ONE = 1;
+    case TWO = 2;
+    case THREE = 3;
 }
 
-OrderStatus::getNamesExcept([OrderStatus::PENDING]); // ['COMPLETED', 'CANCELLED']
+MyEnum::getNamesExcept([MyEnum::ONE]);   // ['TWO', 'THREE']
 ```
 
 ___
@@ -172,15 +172,15 @@ ___
 - You can get values of enum cases as an array except for given ones by using the `getValuesExcept()` method.
 
 ```php
-enum OrderStatus: string {
+enum MyEnum: int {
     use PoweredEnum;
 
-    case PENDING = 'pending';
-    case COMPLETED = 'completed';
-    case CANCELLED = 'cancelled';
+    case ONE = 1;
+    case TWO = 2;
+    case THREE = 3;
 }
 
-OrderStatus::getValuesExcept([OrderStatus::PENDING]); // ['completed', 'cancelled']
+MyEnum::getValuesExcept([MyEnum::ONE]);   // [2, 3]
 ```
 
 ___
@@ -189,15 +189,15 @@ ___
 - You can get a combined array of the enum cases as `value => name` except for given ones by using the `toArrayExcept()` method.
 
 ```php
-enum OrderStatus: string {
+enum MyEnum: int {
     use PoweredEnum;
 
-    case PENDING = 'pending';
-    case COMPLETED = 'completed';
-    case CANCELLED = 'cancelled';
+    case ONE = 1;
+    case TWO = 2;
+    case THREE = 3;
 }
 
-OrderStatus::toArrayExcept([OrderStatus::PENDING]); // ['completed' => 'COMPLETED', 'cancelled' => 'CANCELLED]
+MyEnum::toArrayExcept([MyEnum::ONE]);   // [2 => 'TWO', 3 => 'THREE]
 ```
 
 ___
@@ -206,13 +206,13 @@ ___
 - You can get a random name of the enum cases by using the `getRandomName()` method.
 
 ```php
-enum OrderStatus: string {
+enum MyEnum: int {
     use PoweredEnum;
 
-    case PENDING = 'pending';
+    case ONE = 1;
 }
 
-OrderStatus::getRandomName(); // ['PENDING']
+MyEnum::getRandomName();   // ['ONE']
 ```
 
 ___
@@ -221,13 +221,13 @@ ___
 - You can get a random value of the enum cases by using the `getRandomValue()` method.
 
 ```php
-enum OrderStatus: string {
+enum MyEnum: int {
     use PoweredEnum;
 
-    case PENDING = 'pending';
+    case ONE = 1;
 }
 
-OrderStatus::getRandomValue(); // ['pending']
+MyEnum::getRandomValue();   // [1]
 ```
 
 ___
@@ -236,13 +236,13 @@ ___
 - You can get a random case of the enum by using the `getRandomCase()` method.
 
 ```php
-enum OrderStatus: string {
+enum MyEnum: int {
     use PoweredEnum;
 
-    case PENDING = 'pending';
+    case ONE = 1;
 }
 
-OrderStatus::getRandomCase(); // OrderStatus::PENDING
+MyEnum::getRandomCase();   // MyEnum::ONE
 ```
 
 ## Testing
